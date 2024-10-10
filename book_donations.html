@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="manifest" href="assets/images/site.webmanifest">
+    <title>Book Donations</title>
+    <link rel="stylesheet" href="book_donations.css">
+    <!-- import bootstrap 3.4.1 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"
+        integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="navbar-new.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .header,
+        .header1 {
+            background-color: rgb(78, 78, 78);
+            display: flex;
+            color: whitesmoke;
+            justify-content: space-between;
+        }
+
+        .header li,
+        .header1 li {
+            list-style: none;
+            padding: 5px;
+        }
+
+        @media screen and (min-width: 768px) {
+            .footer-for-empty {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .header li {
+                font-size: small;
+            }
+
+            .header1 li {
+                font-size: small;
+            }
+
+            footer {
+                font-size: 7px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .text {
+                font-size: 20px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            footer {
+                font-size: 7px;
+            }
+
+            .aboutus {
+                font-size: 15px;
+                font-weight: bold;
+                text-align: center;
+            }
+        }
+
+        .aboutus {
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <marquee behavior="" direction="left">
+            <li>Ensuring basic needs through positive deeds</li>
+        </marquee>
+    </div>
+    <div class="row-1">
+        <nav class="navbar-1">
+        </nav>
+        <script src="navbar-new.js"></script>
+        <main>
+            <section class="donate-book">
+                <h2>Got a book to donate?</h2>
+                <p>
+                    We are always looking for books donors. If you have any books that you would like to donate,
+                    please click the button below and fill out the form.
+                </p>
+                <a href="donateBookForm.html" class="donate-book-button">Donate a book</a>
+            </section>
+            <h1 style="text-align: center; color: rgb(0,0,0); margin: 10px 0px;">BOOK DONATIONS</h1>
+            <!-- <div class="bookCards">
+            <div class="bookCard">
+                <img src="https://covers.openlibrary.org/b/isbn/9780062457721-M.jpg" alt="">
+                <div class="bookCardDetails">
+                    <div class="book-details">
+                        <h2 class="book-name">Demo book 1</h2>
+                        <h5 class="author-name">by <span class="author-name">A Random Author</span></h5>
+                    </div>
+                    <ul class="tags">
+                        <li class="tag">Fiction</li>
+                        <li class="tag">Thriller</li>
+                        <li class="tag">Drama</li>
+                    </ul>
+                    <p class="book-description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quisquam, quidem.
+                    </p>
+                    <p class="donor-details">
+                        Donated by: <span class="donor-name">John Doe</span> <br>
+                        Contact: <span class="donor-contact">+91 1234567890</span>
+                    </p>
+                </div>
+            </div>
+            <div class="bookCard">
+                <img src="https://covers.openlibrary.org/b/isbn/9788498386301-M.jpg" alt="">
+                <div class="bookCardDetails">
+                    <div class="book-details">
+                        <h2 class="book-name">Demo book 1</h2>
+                        <h5 class="author-name">by <span class="author-name">A Random Author</span></h5>
+                    </div>
+                    <ul class="tags">
+                        <li class="tag">Fiction</li>
+                        <li class="tag">Thriller</li>
+                        <li class="tag">Drama</li>
+                    </ul>
+                    <p class="book-description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quisquam, quidem.
+                    </p>
+                    <p class="donor-details">
+                        Donated by: <span class="donor-name">John Doe</span> <br>
+                        Contact: <span class="donor-contact">+91 1234567890</span>
+                    </p>
+                </div>
+            </div>
+            <div class="bookCard">
+                <img src="https://covers.openlibrary.org/b/isbn/9780143130727-M.jpg" alt="">
+                <div class="bookCardDetails">
+                    <div class="book-details">
+                        <h2 class="book-name">Demo book 1</h2>
+                        <h5 class="author-name">by <span class="author-name">A Random Author</span></h5>
+                    </div>
+                    <ul class="tags">
+                        <li class="tag">Fiction</li>
+                        <li class="tag">Thriller</li>
+                        <li class="tag">Drama</li>
+                    </ul>
+                    <p class="book-description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quisquam, quidem.
+                    </p>
+                    <p class="donor-details">
+                        Donated by: <span class="donor-name">John Doe</span> <br>
+                        Contact: <span class="donor-contact">+91 1234567890</span>
+                    </p>
+                </div>
+            </div>
+            <div class="bookCard">
+                <img src="https://covers.openlibrary.org/b/isbn/9780590353427-M.jpg" alt="">
+                <div class="bookCardDetails">
+                    <div class="book-details">
+                        <h2 class="book-name">Demo book 1</h2>
+                        <h5 class="author-name">by <span class="author-name">A Random Author</span></h5>
+                    </div>
+                    <ul class="tags">
+                        <li class="tag">Fiction</li>
+                        <li class="tag">Thriller</li>
+                        <li class="tag">Drama</li>
+                    </ul>
+                    <p class="book-description">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quisquam, quidem.
+                    </p>
+                    <p class="donor-details">
+                        Donated by: <span class="donor-name">John Doe</span> <br>
+                        Contact: <span class="donor-contact">+91 1234567890</span>
+                    </p>
+                </div>
+            </div>
+        </div> -->
+        </main>
+        <br>
+            <footer></footer>
+            <script src="footer-new.js"></script>
+            <div class="header">
+        <marquee behavior="" direction="left">
+            <li>Ensuring basic needs through positive deeds</li>
+        </marquee>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Title Page-->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="manifest" href="assets/images/site.webmanifest">
+    <title>Donate a Book</title>
+
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+        rel="stylesheet">
+
+    <!-- Main CSS-->
+    <link href="donateBookForm.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper bg-dark p-t-100 p-b-50">
+        <div class="wrapper wrapper--w900">
+            <div class="card card-6">
+                <div class="card-heading">
+                    <h2 class="title">Donate a Book</h2>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="uploadBook.php" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div class="name">Your Full name</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="donor_name" placeholder="your name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Email address</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="email" name="donor_email"
+                                        placeholder="example@gmail.com" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Contact No.</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="tel" name="donor_contact"
+                                        placeholder="Whatsapp or phone" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">13-digit ISBN of the book</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input type="text" class="input--style-6" name="isbn"
+                                        placeholder="e.g. 9780143130727" id="isbn">
+                                    <div id="isbn_check"></div>
+                                </div>
+                                <script>
+                                    let isbn = document.getElementById('isbn');
+                                    isbn.addEventListener('keyup', function (e) {
+                                        // check if 13 digit isbn is valid
+                                        if (isbn.value.length == 13) {
+                                            let xhr = new XMLHttpRequest();
+                                            xhr.open('GET', 'https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn.value, true);
+                                            xhr.onload = function () {
+                                                if (this.status == 200) {
+                                                    let response = JSON.parse(this.responseText);
+                                                    if (response.totalItems == 0) {
+                                                        document.getElementById('isbn_check').innerHTML = '<span class="text-danger">Invalid ISBN or book not found, kindly enter the book details manually</span>';
+                                                    } else {
+                                                        document.getElementById('isbn_check').innerHTML = '<span class="text-success">Valid ISBN</span>';
+                                                    }
+                                                }
+                                            }
+                                            xhr.send();
+                                        } else {
+                                            document.getElementById('isbn_check').innerHTML = '<span class="text-danger">Invalid ISBN</span>';
+                                        }
+                                        if (e.target.value.length == 13) {
+                                            let isbn = e.target.value;
+                                            let url = 'https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn;
+                                            fetch(url)
+                                                .then(res => res.json())
+                                                .then(data => {
+                                                    let book_name = data.items[0].volumeInfo.title;
+                                                    let author_name = data.items[0].volumeInfo.authors;
+                                                    document.getElementById('book_name').value = book_name;
+                                                    document.getElementById('author_name').value = author_name;
+                                                })
+                                                .catch(err => console.log(err));
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Book name</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="book_name" id="book_name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Author name</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="author_name" id="author_name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Class / Grade <br> (if applicable)</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="class_grade" id="class_grade">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Description</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <textarea class="textarea--style-6" name="description"
+                                        placeholder="About the book and current condition"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Upload pictures of the book</div>
+                            <div class="value">
+                                <div class="input-group">                                    
+                                    <div>
+                                        <label class="label--file" for="front_image">Front Cover</label>
+                                        <input class="input-file label--file" type="file" accept="image/*" name="front_image" id="front_image" required>
+                                    </div><br>
+                                    <div>
+                                        <label class="label--file" for="back_image">Back Cover</label>
+                                        <input class="input-file label--file" type="file" accept="image/*" name="back_image" id="back_image" required>
+                                    </div><br>
+                                    <div>
+                                        <label class="label--file" for="random_image">Any Random Page</label>
+                                        <input class="input-file label--file" type="file" accept="image/*" name="random_image" id="random_image" required>
+                                    </div><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn--radius-2 btn--blue-2" type="submit" name="submit">Send
+                                Application</button>
+                            <button class="btn btn--radius-2 btn--blue-2" type="cancel" name="cancel" onClick="window.location.href='book_donations.html'">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
+<!-- end document-->
